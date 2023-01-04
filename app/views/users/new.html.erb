@@ -1,0 +1,22 @@
+<h1>ユーザー新規作成画面</h1>
+
+<%= form_with model: @user, local: true do |f| %>
+  <div>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :email, "メール" %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, "パスワード（確認）" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <%= f.submit "登録", disable_with: 'Submiting...' %>
+<% end %>
+  
