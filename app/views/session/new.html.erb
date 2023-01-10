@@ -1,0 +1,13 @@
+<h2>ログイン画面</h2>
+
+<%= form_with scope: :session	, local: true do |f| %>
+  <div>
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password %>
+  </div>
+  <%= f.submit "ログイン", disable_with: 'Submiting...' %>
+<% end %>
