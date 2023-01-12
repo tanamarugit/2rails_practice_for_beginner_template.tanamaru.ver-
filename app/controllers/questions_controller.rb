@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :login_required, except: %i[index]
   def index
-    @questions = Question.all
+    @q = Question.ransack(params[:q])
+    @questions = @q.result(distinct: true)
   end
 
   def new
@@ -38,6 +39,11 @@ class QuestionsController < ApplicationController
     redirect_to questions_path, success: "質問「#{@question.title}」を削除しました。"
   end
 
+  def solve
+    @question = Question.find(params[:id])
+    @question.update(solved_check: true)
+    redirect_to questions_path(@question), success: '質問を解決済みにしました。'
+  end
   private
 
   def question_params
