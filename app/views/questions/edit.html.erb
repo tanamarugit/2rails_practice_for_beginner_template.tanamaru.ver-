@@ -1,0 +1,13 @@
+<h2>質問編集画面</h2>
+
+<%= form_with model: @question, local: true do |f| %>
+  <div>
+    <%= f.label :title, "質問タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :body, "質問内容" %>
+    <%= f.text_field :body %>
+  </div>
+  <%= f.submit "更新", disable_with: '更新中' %>
+<% end %>

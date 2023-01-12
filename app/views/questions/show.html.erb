@@ -1,0 +1,13 @@
+<h2>質問詳細画面</h2>
+
+<div>
+  <h3>質問タイトル</h3>
+  <%= @question.title %>
+</div>
+<div>
+  <h3>質問内容</h3>
+  <%= @question.body %>
+</div>
+
+<%= link_to  "編集", edit_question_path %>
+<div><%= link_to  "削除", @question, method: :delete, data: {confirm: "質問「#{@question.title}」を削除しますか？"}, class: 'btn-danger' %></div>

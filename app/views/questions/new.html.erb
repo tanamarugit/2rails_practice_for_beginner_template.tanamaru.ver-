@@ -1,0 +1,12 @@
+<h2>質問投稿画面</h2>
+<%= form_with model: @question, local: true do |f| %>
+  <div>
+    <%= f.label :title, "質問タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :body, "内容" %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit "Submit", disable_with: 'Submiting...' %>
+<% end %>

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_04_102930) do
+ActiveRecord::Schema.define(version: 2023_01_11_112916) do
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.boolean "solved_check"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -21,4 +31,5 @@ ActiveRecord::Schema.define(version: 2023_01_04_102930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "questions", "users"
 end
