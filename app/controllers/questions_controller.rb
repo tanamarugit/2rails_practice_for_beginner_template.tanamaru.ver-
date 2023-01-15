@@ -23,24 +23,25 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
+
   end
 
   def update
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
     if @question.update(question_params)
       redirect_to questions_path, success: "質問「#{@question.title}」を更新しました。"
     end
   end
 
   def destroy
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
     @question.destroy
     redirect_to questions_path, success: "質問「#{@question.title}」を削除しました。"
   end
 
   def solve
-    @question = Question.find(params[:id])
+    @question = current_user.questions.find(params[:id])
     @question.update(solved_check: true)
     redirect_to questions_path(@question), success: '質問を解決済みにしました。'
   end
